@@ -2,10 +2,37 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: #4f0c83; /* black background */
+    color: #bf434365;
+}
+
+/* Header with a distinct color and border radius */
+header {
+    background: #6c2eb7; /* distinct purple */
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+    margin: 16px 16px 0 16px;
+    padding: 20px 16px;
 }
 
 h1 {
     color: #2c3e50;
     text-align: center;
+}
+
+/* Card style for all divs */
+div {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.15);
+    margin: 24px 16px;
+    padding: 24px 20px;
+}
+
+/* Blue-ish background for other block elements */
+section, footer, article, aside, nav, main {
+    background: #1e3a5c;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 16px;
 }
