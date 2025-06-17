@@ -1,43 +1,263 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #4f0c83; /* black background */
-    color: #bf434365;
+  background: linear-gradient(135deg, #fff 0%, #03c7fd 50%, #082146 100%);
+  font-family: 'Segoe UI', 'Helvetica', Arial, sans-serif;
+  position: relative;
 }
 
-/* Header with a distinct color and border radius */
-header {
-    background: #6c2eb7; /* distinct purple */
-    color: #fff;
-    border-radius: 12px 12px 0 0;
-    margin: 16px 16px 0 16px;
-    padding: 20px 16px;
+svg {
+  fill: #222222; /* dark gray */
 }
 
-h1 {
-    color: #2c3e50;
-    text-align: center;
+img[src$="intel-header-logo.svg"] {
+  width: 22%;
+  height: auto;
 }
 
-/* Card style for all divs */
-div {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(44, 62, 80, 0.15);
-    margin: 24px 16px;
-    padding: 24px 20px;
+a > div > span {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #222;
+  letter-spacing: 2px;
+  margin-left: 16px;
+  align-self: center;
 }
 
-/* Blue-ish background for other block elements */
-section, footer, article, aside, nav, main {
-    background: #1e3a5c;
-    border-radius: 8px;
-    margin: 16px;
-    padding: 16px;
+section {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  gap: 2em;
+  padding: 2em 0;
+  max-width: calc(4 * 270px + 3 * 2em); /* 4 cards + 3 gaps */
+  width: 100%;
+  margin: 0 auto;
+  /* Optional: hide scrollbar for a cleaner look */
+  scrollbar-width: thin;
+  scrollbar-color: #03c7fd #fff;
 }
 
-footer {
-    background-color: #1a237e; /* Change to your desired color */
-    color: #fff; /* Optional: ensure text is readable */
+.card {
+  margin: 0;
+  padding: 2em;
+  width: 500px;
+  height: 500px;
+  background-color: #082146;
+  border-radius: 10px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+  cursor: pointer;
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  color: #fff;
 }
+
+.card:hover,
+.card:focus {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  z-index: 1;
+}
+
+.card:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+/* Overlay styles */
+.card .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 199, 253, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(.4,2,.6,1);
+  font-size: 1.3rem;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1em;
+  z-index: 2;
+}
+
+.card:hover .overlay,
+.card:focus .overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Make card text transparent by default, visible on hover */
+.card .card-content {
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(.4,2,.6,1);
+}
+
+.card:hover .card-content,
+.card:focus .card-content {
+  opacity: 1;
+}
+
+/* Responsive image inside card */
+.card img {
+  display: block;
+  max-width: 100%;
+  max-height: 65%;
+  width: auto;
+  height: auto;
+  margin: 0 auto 1em auto;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+/* Optional: style scrollbar for webkit browsers */
+section::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 6px;
+}
+section::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 6px;
+}
+section::-webkit-scrollbar {
+  height: 12px;
+  background: #fff;
+}
+
+/* For Firefox */
+section {
+  scrollbar-color: #fff #fff;
+  scrollbar-width: thin;
+}
+
+/* Header styles moved from HTML */
+.main-header {
+  background-color: #0B1E3C;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.main-title {
+  color: #3FC1FF;
+  font-family: inherit;
+  font-size: 2.8rem;
+  margin: 0;
+}
+
+.main-desc {
+  color: #A9B4C2;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 10px auto;
+  font-family: inherit;
+}
+
+/* Footer styles */
+.main-footer {
+  background-color: #0B1E3C;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-text {
+  color: #3FC1FF;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  margin: 0;
+}
+
+.footer-text a {
+  list-style: none;
+  text-decoration: none;
+  color: #3FC1FF;
+}
+
+.footer-text a:hover,
+.footer-text a:active {
+  color: #fff;
+}
+
+/* Logo styles */
+.logo-link {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  z-index: 10;
+  display: block;
+}
+
+.header-logo {
+  width: 12vw;
+  min-width: 80px;
+  max-width: 180px;
+  height: auto;
+  display: block;
+}
+
+/* Responsive: adjust logo size and position on small screens */
+@media (max-width: 600px) {
+  .logo-link {
+    top: 8px;
+    left: 8px;
+  }
+  .header-logo {
+    width: 28vw;
+    min-width: 40px;
+    max-width: 80px;
+  }
+  section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    padding: 1em 0;
+    overflow-x: visible;
+    overflow-y: auto;
+    scroll-snap-type: none;
+  }
+  .card {
+    width: 96vw;
+    max-width: 98vw;
+    height: auto;
+    min-height: 300px;
+    padding: 2em 1.2em 2em 1.2em;
+    box-sizing: border-box;
+  }
+  .card img {
+    max-height: 35vw;
+    min-height: 100px;
+    margin-bottom: 1em;
+  }
+}
+
+@media (max-width: 900px) {
+  section {
+    max-width: 100%;
+    gap: 1em;
+    padding: 1em 0;
+  }
+  .card {
+    width: 90vw;
+    max-width: 350px;
+    height: 420px;
+    padding: 2em 1.2em 2em 1.2em;
+  }
+  .card img {
+    max-height: 50%;
+    margin-bottom: 1em;
+  }
+  .header-logo {
+    width: 18vw;
+    min-width: 60px;
+    max-width: 120px;
+  }
+}
+
+
+
