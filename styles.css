@@ -36,3 +36,8 @@ section, footer, article, aside, nav, main {
     margin: 16px;
     padding: 16px;
 }
+
+footer {
+    background-color: #1a237e; /* Change to your desired color */
+    color: #fff; /* Optional: ensure text is readable */
+}
